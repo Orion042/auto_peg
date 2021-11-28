@@ -5,3 +5,5 @@ pip install ffmpeg-python
 # peg.pyの使用方法
 
 peg.pyにPATHを通すことで使用することが可能となります．
+それ以外のファイルにPATHを通す必要はありません．
+**peg.py**だけで大丈夫です．
