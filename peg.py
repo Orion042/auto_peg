@@ -78,9 +78,9 @@ def mainProgram():
 
     numberOfDigits=int(math.log10(countAll)+1)
 
-    finishConvert = startConvert(1,countAll,extension.i,extension.o)
+    convertResult = startConvert(1,countAll,extension.i,extension.o)
 
-    if (finishConvert):
+    if (convertResult):
         user = input("元のファイルは削除しますか？ [Y/N] --> ")
 
         if (user == "YES") or (user == "Yes") or (user == "Y") or (user == "y"):
