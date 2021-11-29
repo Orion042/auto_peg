@@ -53,16 +53,24 @@ def countImages() -> int:
 def checkCommand():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--i", help="変更前拡張子を入力してください．", type=str)
+    parser.add_argument("-i", help="変更前拡張子を入力してください．", type=str)
 
-    parser.add_argument("--o", help="変更後拡張子を入力してください．", type=str)
+    parser.add_argument("-o", help="変更後拡張子を入力してください．", type=str)
 
     args = parser.parse_args()
 
-    return (args)
+    return args
 
+def callPage():
+    print("===================")
+    print("    画像自動変換   ")
+    print("===================")
+    print("終了する場合はqを入力")
+    print("-------------------")
 
 def mainProgram():
+
+    callPage()
 
     extension = checkCommand()
 
