@@ -6,12 +6,12 @@ import argparse
 import os, os.path
 
 def show(endNumber : int) -> None:
-    print("開始番号 : 1")
-    print("終了番号 : " + str(endNumber))
+    print("Start Number : 1")
+    print("End Number : " + str(endNumber))
 
 def userChoice() -> bool:
 
-    user = input("番号は大丈夫でしょうか [Y/N] ? --> ")
+    user = input("Is the number oK ? [Y/N] --> ")
 
     if (user == "YES") or (user == "Yes") or (user == "Y") or (user == "y"):
         return True
@@ -25,8 +25,8 @@ def startConvert(startNumber: int,endNumber: int,beforeExtension: str,afterExten
     show(endNumber)
 
     if(not userChoice()):
-        startNumber = int(input("開始番号を入力してください --> "))
-        endNumber = int(input("終了番号を入力してください --> "))
+        startNumber = int(input("Please enter a starting number --> "))
+        endNumber = int(input("Please enter a exit number --> "))
 
     for i in range(startNumber,endNumber+1):
         
@@ -79,14 +79,14 @@ def main() -> None:
     finishConvert = startConvert(1,countAll,extension.input,extension.output)
 
     if (finishConvert):
-        user = input("元のファイルは削除しますか？ [Y/N] --> ")
+        user = input("Do you want to delete the original file ？ [Y/N] --> ")
 
         if (user == "YES") or (user == "Yes") or (user == "Y") or (user == "y"):
             os.remove(extension.input)
         else:
             pass
     else:
-        print("元のファイル数と変換後のファイル数が異なります．")
+        print("The number of original files differs from the number of converted files．")
 
 
 if __name__ == '__main__':
