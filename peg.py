@@ -5,7 +5,7 @@ import sys
 import argparse
 import os, os.path
 
-def show(endNumber : int):
+def show(endNumber : int) -> None:
     print("開始番号 : 1")
     print("終了番号 : " + str(endNumber))
 
@@ -36,8 +36,10 @@ def startConvert(startNumber: int,endNumber: int,beforeExtension: str,afterExten
 			ffmpeg
 			.input('{}.' + beforeExtension.format(countConvert))
 			.output('{}.' + afterExtension.format(countConvert))
-			.run()
+			.run(quiet=True)
 		)
+
+        print("\r" + "Convert " + str(i) + " of " + str(endNumber),end="")
     
     finalNum = len([name for name in os.listdir(".") if os.path.isfile(name)])
 
@@ -53,22 +55,18 @@ def countImages() -> int:
 def checkCommand():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--i", help="変更前拡張子を入力してください．", type=str)
+    parser.add_argument("-i","--input",required=True, help="変更前拡張子を入力してください．", type=str)
 
-    parser.add_argument("--o", help="変更後拡張子を入力してください．", type=str)
+    parser.add_argument("-o","--output",required=True, help="変更後拡張子を入力してください．", type=str)
 
     args = parser.parse_args()
 
     return (args)
 
 
-def mainProgram():
+def main() -> None:
 
     extension = checkCommand()
-
-    #extension.i は変更前の拡張子情報
-
-    #extension.o は変更後の拡張子情報
 
     global countAll
 
@@ -78,13 +76,13 @@ def mainProgram():
 
     numberOfDigits=int(math.log10(countAll)+1)
 
-    finishConvert = startConvert(1,countAll,extension.i,extension.o)
+    finishConvert = startConvert(1,countAll,extension.input,extension.output)
 
     if (finishConvert):
         user = input("元のファイルは削除しますか？ [Y/N] --> ")
 
         if (user == "YES") or (user == "Yes") or (user == "Y") or (user == "y"):
-            os.remove(extension.i)
+            os.remove(extension.input)
         else:
             pass
     else:
@@ -92,4 +90,4 @@ def mainProgram():
 
 
 if __name__ == '__main__':
-    mainProgram()
+    main()
