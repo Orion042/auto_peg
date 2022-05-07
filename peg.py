@@ -13,9 +13,9 @@ def userChoice() -> bool:
 
     user = input("Is the number oK ? [Y/N] --> ")
 
-    if (user == "YES") or (user == "Yes") or (user == "Y") or (user == "y"):
+    if (user.lower() == "yes") or (user.lower() == "y"):
         return True
-    elif (user == "NO") or (user == "No") or (user == "no") or (user == "N") or (user == "n"):
+    elif (user.lower() == "no") or (user.lower() == "n"):
         return False
     else:
         sys.exit()
@@ -81,7 +81,7 @@ def main() -> None:
     if (finishConvert):
         user = input("Do you want to delete the original file ？ [Y/N] --> ")
 
-        if (user == "YES") or (user == "Yes") or (user == "Y") or (user == "y"):
+        if (user.lower() == "yes") or (user.lower() == "y"):
             os.remove(extension.input)
         else:
             pass
