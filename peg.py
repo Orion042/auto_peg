@@ -71,8 +71,6 @@ def startConvert(startNumber: int,endNumber: int,beforeExtension: str,afterExten
         print("\r" + "Converting " + str(i) + " of " + str(endNumber),end="")
     print("")
 
-    # finalNum = len([name for name in os.listdir(".") if os.path.isfile(name)])
-
     files = os.listdir(".")
     files.sort(key=os.path.getmtime, reverse=False)
 
