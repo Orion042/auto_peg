@@ -87,19 +87,6 @@ def startConvert(startNumber: int,endNumber: int,beforeExtension: str,afterExten
     else: 
         return False
 
-def countImages(extension) -> int:
-    files = os.listdir(".")
-    files.sort(key=os.path.getmtime, reverse=False)
-
-    images_num = 0
-
-    file_type = extension.input
-
-    for _ ,name in enumerate(files):
-        if name.endswith(file_type):
-            images_num += 1
-    return images_num
-
 
 def checkCommand():
     parser = argparse.ArgumentParser()
@@ -121,13 +108,11 @@ def main() -> None:
 
     before_images_num = renameFile(extension)
 
-    countAll = countImages(extension)
-
     global numberOfDigits
 
     numberOfDigits=int(math.log10(countAll)+1)
 
-    finishConvert = startConvert(1,countAll,extension.input,extension.output,before_images_num)
+    finishConvert = startConvert(1,before_images_num,extension.input,extension.output,before_images_num)
 
     print("done")
 
