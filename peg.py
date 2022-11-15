@@ -51,7 +51,7 @@ def renameFile(extension):
 
 def startConvert(startNumber: int,endNumber: int,beforeExtension: str,afterExtension: str,before_images_num: int) -> bool:
     
-    show(1, countAll)
+    show(startNumber, endNumber)
 
     if(not userChoice()):
         startNumber = int(input("Please enter a Start number --> "))
@@ -104,13 +104,11 @@ def main() -> None:
 
     extension = checkCommand()
 
-    global countAll
-
     before_images_num = renameFile(extension)
 
     global numberOfDigits
 
-    numberOfDigits=int(math.log10(countAll)+1)
+    numberOfDigits=int(math.log10(before_images_num)+1)
 
     finishConvert = startConvert(1,before_images_num,extension.input,extension.output,before_images_num)
 
